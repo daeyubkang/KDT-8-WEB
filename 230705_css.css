@@ -1,0 +1,91 @@
+/* div {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  background-color: lightgrey;
+} */
+
+/* * {
+  color: red;
+} */
+
+/* span {
+  background-color: red;
+} */
+
+/* .orange {
+  color: orange;
+} */
+/* 
+#orange {
+  color: blue;
+} */
+
+span.orange {
+  color: red;
+}
+
+ul > .orange {
+  background-color: grey;
+}
+
+ul .orange {
+  font-weight: bold;
+}
+
+.orange + li {
+  font-size: 30px;
+}
+
+.orange ~ li {
+  color: green;
+}
+
+a:hover {
+  color: red;
+}
+
+a:active {
+  background-color: black;
+  color: white;
+}
+
+input:focus {
+  background-color: lightgrey;
+}
+
+.fruits span:nth-child(1) {
+  color: red;
+}
+
+.fruits div:first-child {
+  color: blue;
+}
+
+.fruits h3:last-child {
+  text-decoration: underline;
+}
+
+.fruits p:last-child {
+  color: green;
+}
+
+.fruits *:not(span) {
+  background-color: aqua;
+}
+
+.fruits::before {
+  content: "과일 목록 시작";
+}
+
+.fruits::after {
+  content: "과일 목록 끝";
+}
+
+input[readonly] {
+  background-color: orange;
+}
+
+input[type="password"] {
+  color: red;
+}
