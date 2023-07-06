@@ -4,30 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      input {
+        border: 1px solid rebeccapurple;
+      }
+      .email {
+        border: 2px solid greenyellow;
+      }
+      .qwe {
+        color: blue;
+      }
+      .ewq {
+        color: orange;
+      }
+      .asd {
+        color: green;
+      }
+    </style>
   </head>
   <body>
-    <h1>설문조사</h1>
-    이름<input type="text" />
-    <br />
-    이메일<input type="email" placeholder="email@sample.com" />
-    <h2>나이</h2>
-    <input type="radio" name="age" value="10대" checked />10대
-    <input type="radio" name="age" value="20대" />20대
-    <input type="radio" name="age" value="30대" />30대
-    <input type="radio" name="age" value="40대" />40대
-    <input type="radio" name="age" value="50대" />50대
-    <input type="radio" name="age" value="60대" />60대 이상
-    <h2>원하는 강의(복수응답가능합니다.)</h2>
-    <input type="checkbox" name="lecture" value="html" checked />html
-    <input type="checkbox" name="lecture" value="javascript" />javascript
-    <input type="checkbox" name="lecture" value="css" />css
-    <br />
-    <br />
-    <textarea
-      cols="50"
-      rows="10"
-      placeholder="하고 싶은 말을 써주세요:)"
-    ></textarea>
-    <button>제출</button>
+    <div style="border: 1px solid black; width: 500px; height: 500px">
+      <h1 class="qwe">설문조사</h1>
+      이름<input type="text" />
+      <br />
+      이메일<input class="email" type="email" placeholder="email@sample.com" />
+      <h2 class="ewq">나이</h2>
+      <input type="radio" name="age" value="10대" checked />10대
+      <input type="radio" name="age" value="20대" />20대
+      <input type="radio" name="age" value="30대" />30대
+      <input type="radio" name="age" value="40대" />40대
+      <input type="radio" name="age" value="50대" />50대
+      <input type="radio" name="age" value="60대" />60대 이상
+      <h2 class="asd">원하는 강의(복수응답가능합니다.)</h2>
+      <input type="checkbox" name="lecture" value="html" checked />html
+      <input type="checkbox" name="lecture" value="javascript" />javascript
+      <input type="checkbox" name="lecture" value="css" />css
+      <br />
+      <br />
+      <textarea
+        cols="50"
+        rows="10"
+        placeholder="하고 싶은 말을 써주세요:)"
+        style="border: 2px solid salmon; background-color: gold"
+      ></textarea>
+      <button style="border-color: aqua">제출</button>
+    </div>
   </body>
 </html>
