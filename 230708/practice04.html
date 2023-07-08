@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100vw;
+        height: 100vh;
+        animation-name: myanim;
+        background-color: skyblue;
+        position: relative;
+      }
+      .city {
+        position: absolute;
+        width: 600px;
+        height: 500px;
+      }
+      .sun {
+        justify-content: center;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+      }
+      .cloud {
+        position: absolute;
+        justify-content: center;
+        width: 100px;
+        height: 100px;
+      }
+      @keyframes myanim {
+        0% {
+          background-color: skyblue;
+        }
+
+        100% {
+          background-color: plum;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img class="city" src="./city.png" alt="" />
+      <img class="cloud" src="./cloud.png" alt="" />
+      <img class="sun" src="./sun.png" alt="" />
+    </div>
+  </body>
+</html>
