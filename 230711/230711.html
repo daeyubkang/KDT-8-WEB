@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <button onclick="add()">더하기</button>
+    <button onclick="sub()">빼기</button>
+    <button onclick="mul()">곱하기</button>
+    <button onclick="div()">나누기</button> -->
+    <script>
+      let age = Number(prompt("나이를 입력하세요"));
+      let qwe = prompt("성별을 입력하세요");
+
+      if (age >= 20) {
+        if (qwe === "남자") {
+          alert("성인 남자");
+        } else if (qwe === "여자") {
+          alert("성인 여자");
+        } else {
+          alert("잘못된 입력");
+        }
+      } else if (age >= 17) {
+        if (qwe === "남자") {
+          alert("남자 고등학생");
+        } else if (qwe === "여자") {
+          alert("여자 고등학생");
+        } else {
+          alert("잘못된 입력");
+        }
+      } else if (age >= 14) {
+        if (qwe === "남자") {
+          alert("남자 중학생");
+        } else if (qwe === "여자") {
+          alert("여자 중학생");
+        } else {
+          alert("잘못된 입력");
+        }
+      } else if (age >= 8) {
+        if (qwe === "남자") {
+          alert("남자 초등학생");
+        } else if (qwe === "여자") {
+          alert("여자 초등학생");
+        } else {
+          alert("잘못된 입력");
+        }
+      } else if (age >= 0) {
+        if (qwe === "남자") {
+          alert("남자 유아");
+        } else if (qwe === "여자") {
+          alert("여자 유아");
+        } else {
+          alert("잘못된 입력");
+        }
+      } else {
+        alert("잘못 입력하셨습니다.");
+      }
+
+      // const msg = "안녕하세요";
+      // console.log(msg);
+
+      // let colors = [
+      //   "red",
+      //   "orange",
+      //   "yellow",
+      //   "green",
+      //   "blue",
+      //   "navy",
+      //   "black",
+      // ];
+
+      // console.log(colors[2]);
+      // console.log(colors.push("purple"), colors);
+      // console.log(colors.indexOf("black"));
+      // console.log(colors.reverse());
+
+      // console.log(typeof 1 + " isn`t " + typeof "sad" + " data type.");
+      // console.log(
+      //   "Typeof를 boolean이나 null에 사용하면, " +
+      //     typeof null +
+      //     " 결과를 얻을 수 있습니다."
+      // );
+
+      // let mathScore = prompt("수학 점수를 입력하게요.");
+      // let engScore = prompt("영어 점수를 입력하세요.");
+
+      // let avg = (Number(mathScore) + Number(engScore)) / 2;
+      // console.log(avg);
+
+      // let functionName = function () {
+      //   console.log("안녕하세요");
+      // };
+      // functionName();
+
+      // function multifly(num1, num2) {
+      //   return num1 * num2;
+      // }
+      // console.log(multifly(3, 7));
+      // console.log(multifly(2, 2));
+
+      // function square(num1) {
+      //   console.log(num1 ** 2);
+      // }
+
+      // square(4);
+      // square(11);
+      // square(5);
+    </script>
+  </body>
+</html>
