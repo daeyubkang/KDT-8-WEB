@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   let fruits = ["apple", "banana", "melon", "cherry", "grape"];
+      //   console.log("fruits: " + fruits);
+      //   console.log("apple: " + fruits[0]);
+
+      //   for (let i = 0; i < fruits.length; i++) {
+      //     console.log(fruits[i]);
+      //   }
+
+      //   for (let fruit of fruits) {
+      //     console.log(fruit);
+      //   }
+
+      //   fruits.forEach((f, index, arr) => {
+      //     console.log(f, index, arr);
+      //   });
+
+      let arr1 = [];
+      let sum = 0;
+      for (let i = 1; i < 101; i++) {
+        arr1.push(i);
+        sum += i;
+      }
+
+      let sum2 = 0;
+      arr1.forEach((element) => {
+        sum2 += element;
+      });
+
+      let sum3 = 0;
+      for (let j of arr1) {
+        sum3 += j;
+      }
+      console.log("for문:", sum, "\narray: ", arr1);
+      console.log("for of문:", sum3);
+      console.log("forEach문:", sum2);
+
+      let fruits1 = [
+        "사과",
+        "딸기",
+        "파인애플",
+        "수박",
+        "참외",
+        "오렌지",
+        "자두",
+        "망고",
+      ];
+      let fruits2 = ["수박", "사과", "참외", "오렌지", "파인애플", "망고"];
+      let sameFruits = [];
+      let diffFruits = [];
+
+      for (let i of fruits1) {
+        let flag = false;
+        for (let j of fruits2) {
+          if (i === j) {
+            sameFruits.push(i);
+            flag = true;
+            break;
+          }
+        }
+        if (flag == false) {
+          diffFruits.push(i);
+        }
+      }
+
+      console.log("Same:", sameFruits);
+      console.log("Diff:", diffFruits);
+    </script>
+  </body>
+</html>
