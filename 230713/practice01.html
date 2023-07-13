@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    값1 : <input type="text" name="" id="num1" />
+    <br />
+    값2 :
+    <input type="text" name="" id="num2" />
+    <br />
+    연산자 :
+    <input type="text" name="" id="id1" />
+    <br />
+    결과 :
+    <input type="text" id="result" />
+    <br />
+    <br />
+    <button id="cal" onclick="cal()">계산하기</button>
+
+    <button id="init" onclick="init()">초기화</button>
+    <script>
+      function cal() {
+        let num1 = document.querySelector("#num1");
+        let num2 = document.querySelector("#num2");
+        let id1 = document.querySelector("#id1");
+        let result = document.querySelector("#result");
+
+        if (id1.value == "+") {
+          result.value = Number(num1.value) + Number(num2.value);
+        } else if (id1.value == "-") {
+          result.value = Number(num1.value) - Number(num2.value);
+        } else if (id1.value == "*") {
+          result.value = Number(num1.value) * Number(num2.value);
+        } else if (id1.value == "/") {
+          result.value = Number(num1.value) / Number(num2.value);
+        } else {
+          alert("잘못된 연산자입니다.");
+        }
+      }
+      function init() {
+        let num1 = document.querySelector("#num1");
+        let num2 = document.querySelector("#num2");
+        let id1 = document.querySelector("#id1");
+        let result = document.querySelector("#result");
+
+        num1.value = "";
+        num2.value = "";
+        id1.value = "";
+        result.value = "";
+      }
+    </script>
+  </body>
+</html>

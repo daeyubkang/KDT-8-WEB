@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        border: 2px solid black;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    방명록입니다.
+    <br />
+    <br />
+    작성자 : <input type="text" id="name1" />
+    <br />
+    내용 : <input style="width: 300px" type="text" id="text1" />
+    <br />
+    <br />
+    <button onclick="addBbs()">작성</button>
+    <br />
+    <br />
+    <table style="align-content: center; text-align: center" id="table1">
+      <tr>
+        <th>번호</th>
+        <th>작성자</th>
+        <th>내용</th>
+        <th>작성일</th>
+      </tr>
+    </table>
+    <script>
+      let count = 1;
+      function addBbs() {
+        let name1 = document.querySelector("#name1").value;
+        let text1 = document.querySelector("#text1").value;
+        let table1 = document.querySelector("#table1");
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = ("0" + (today.getMonth() + 1)).slice(-2);
+        let day = ("0" + today.getDate()).slice(-2);
+
+        let dateString = year + "-" + month + "-" + day;
+
+        var hours = ("0" + today.getHours()).slice(-2);
+        var minutes = ("0" + today.getMinutes()).slice(-2);
+
+        var timeString = dateString + " " + hours + ":" + minutes;
+
+        let tr1 = document.createElement("tr");
+        let th1 = document.createElement("td");
+        let th2 = document.createElement("td");
+        let th3 = document.createElement("td");
+        let th4 = document.createElement("td");
+
+        th1.innerText = count;
+        count++;
+        th2.innerText = name1;
+        th3.innerText = text1;
+        th4.innerText = timeString;
+
+        table1.appendChild(tr1);
+        tr1.appendChild(th1);
+        tr1.appendChild(th2);
+        tr1.appendChild(th3);
+        tr1.appendChild(th4);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        border: 1px, solid black;
+        width: 100px;
+        height: 100px;
+      }
+      #green {
+        background-color: greenyellow;
+      }
+      #red {
+        background-color: rosybrown;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box" id="green">1</div>
+      <div class="box" id="red">2</div>
+      <div class="box" id="">3</div>
+      <div class="box" id="">4</div>
+      <div class="box" id="">5</div>
+    </div>
+    <input type="text" name="userName" />
+
+    <script>
+      const dom1 = document.getElementById("green");
+      console.log(dom1);
+
+      const dom2 = document.getElementsByClassName("box");
+      console.log(dom2);
+      for (let i = 0; i < 5; i++) {
+        console.log(dom2[i]);
+      }
+
+      const dom3 = document.getElementsByTagName("div");
+      console.log(dom3);
+
+      const dom4 = document.getElementsByName("userName");
+      console.log(dom4);
+
+      const dom5 = document.querySelector("#red");
+      console.log(dom5);
+
+      const dom6 = document.querySelectorAll("div");
+      console.log(dom6);
+    </script>
+
+    <div id="abc">
+      Text
+      <div>div text</div>
+      <div>div text</div>
+    </div>
+
+    <script>
+      let abs = document.getElementById("abv");
+      console.log("abc: ", abc);
+      console.log("abc.children:", abc.children);
+      console.log("abc.childNodes:", abc.childNodes);
+    </script>
+  </body>
+</html>
