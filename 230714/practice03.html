@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      td {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        vertical-align: top;
+      }
+      h2 {
+        text-align: center;
+      }
+      div {
+        width: 700px;
+        height: 700px;
+      }
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th {
+        border: 1px solid black;
+      }
+      td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    날짜 : <input type="text" id="day" />
+    <br />
+    내용 : <input type="text" id="text1" />
+    <br />
+    <button id="add1">작성</button>
+    <div>
+      <h2 style="color: green">2023년 7월</h2>
+      <table>
+        <tr>
+          <th style="color: red">일</th>
+          <th>월</th>
+          <th>화</th>
+          <th>수</th>
+          <th>목</th>
+          <th>금</th>
+          <th style="color: blue">토</th>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td style="color: blue" id="1">1</td>
+        </tr>
+        <tr>
+          <td style="color: red" id="2">2</td>
+          <td id="3">3</td>
+          <td id="4">4</td>
+          <td id="5">5</td>
+          <td id="6">6</td>
+          <td id="7">7</td>
+          <td style="color: blue" id="8">8</td>
+        </tr>
+        <tr>
+          <td style="color: red" id="9">9</td>
+          <td id="10">10</td>
+          <td id="11">11</td>
+          <td id="12">12</td>
+          <td id="13">13</td>
+          <td id="14">14</td>
+          <td style="color: blue" id="15">15</td>
+        </tr>
+        <tr>
+          <td style="color: red" id="16">16</td>
+          <td id="17">17</td>
+          <td id="18">18</td>
+          <td id="19">19</td>
+          <td id="20">20</td>
+          <td id="21">21</td>
+          <td style="color: blue" id="22">22</td>
+        </tr>
+        <tr>
+          <td style="color: red" id="23">23</td>
+          <td id="24">24</td>
+          <td id="25">25</td>
+          <td id="26">26</td>
+          <td id="27">27</td>
+          <td id="28">28</td>
+          <td style="color: blue" id="29">29</td>
+        </tr>
+        <tr>
+          <td style="color: red" id="30">30</td>
+          <td id="31">31</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      let day2;
+      $("td").on("click", function (e) {
+        $("#day").val(e.currentTarget.innerHTML);
+        day2 = this;
+      });
+      $("button").on("click", function (e2) {
+        let text2 = document.createElement("p");
+        text2.innerHTML = $("#text1").val();
+        $(day2).append(text2);
+        //   .after($("#text1").val());
+      });
+    </script>
+  </body>
+</html>

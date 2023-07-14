@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      //$(선택자).함수(); -> 함수는 jquery 함수, 선택한 요소는 jquery 객체
+    </script>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+      }
+      .div1 {
+        background-color: red;
+      }
+      .div2 {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="http://www.naver.com">네이버</a>
+    <input type="text" id="input" />
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <button onclick="setValue()">setValue</button>
+    <button onclick="getValue()">getValue</button>
+    <button onclick="changeStyle()">changeStyle</button>
+    <button onclick="changeAttribute()">changeAttribute</button>
+    <button onclick="changeText()">changeText</button>
+    <button onclick="changeHTML()">changeHTML</button>
+
+    <script>
+      function setValue() {
+        $("#input").val("안녕");
+      }
+      function getValue() {
+        // let value = document.querySelector("#input").value;
+        // console.log(value);
+        let value = $("#input").val();
+        console.log(value);
+      }
+      function changeStyle() {
+        //$().css("속성","속성값")
+        $("div").css("border", "10px solid black");
+      }
+      function changeAttribute() {
+        //$().attr("속성","속성값")
+        $("a").attr("href", "https://www.google.com");
+      }
+      function changeText() {
+        $("div").text("<b>asdasd<b>");
+      }
+      function changeHTML() {
+        $("div").html("<b>asdasd<b>");
+      }
+    </script>
+  </body>
+</html>

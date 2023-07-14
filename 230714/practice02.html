@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"
+      integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .css1 {
+        background-color: red;
+      }
+      .css2 {
+        background-color: orange;
+      }
+      .css3 {
+        background-color: yellow;
+      }
+      .css4 {
+        background-color: green;
+      }
+      .css5 {
+        background-color: blue;
+      }
+      .css6 {
+        background-color: navy;
+      }
+      .css7 {
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      onclick="switchClass()"
+      style="width: 200px; height: 200px; border: 1px solid black"
+    ></div>
+    <script>
+      let count = 1;
+      function switchClass() {
+        if (count == 1) {
+          $("div").switchClass("css7", "css1", 300);
+          count++;
+        } else if (count == 2) {
+          $("div").switchClass("css1", "css2", 300);
+          count++;
+        } else if (count == 3) {
+          $("div").switchClass("css2", "css3", 300);
+          count++;
+        } else if (count == 4) {
+          $("div").switchClass("css3", "css4", 300);
+          count++;
+        } else if (count == 5) {
+          $("div").switchClass("css4", "css5", 300);
+          count++;
+        } else if (count == 6) {
+          $("div").switchClass("css5", "css6", 300);
+          count++;
+        } else {
+          $("div").switchClass("css6", "css7", 300);
+          count = 1;
+        }
+      }
+    </script>
+  </body>
+</html>
