@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      span {
+        color: blue;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <div><span><%= userInfo.id %></span>님 환영합니다!</div>
+    <div>비밀번호는 <span><%= userInfo.pw %></span>이군요!!</div>
+    <br />
+    <br />
+    <div>이름: <%= userInfo.name%></div>
+    <div>성별: <%= userInfo.gender%></div>
+    <div>생년월일: <%= userInfo.date%></div>
+    <div>관심사: <%= userInfo.hobby%></div>
+    <div>색깔: <%= userInfo.color%></div>
+    <div>숫자: <%= userInfo.number%></div>
+
+    <a href="/">홈으로 이동</a>
+  </body>
+</html>
