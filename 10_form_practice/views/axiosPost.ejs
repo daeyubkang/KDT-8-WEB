@@ -22,33 +22,25 @@
 
     <script>
       const resultBox = document.querySelector(".result");
-      function button1() {
+      async function button1() {
+        console.log("axios post");
         const form = document.forms["axiosPost"];
-        console.log("ajax post");
-
-        if (form.id1.value == form.password.value) {
+        const data = {
+          id1: form.id1.value,
+          password1: form.password.value,
+        };
+        const result = await axios({
+          method: "POST",
+          url: "/axios",
+          data,
+        });
+        if (result.data) {
           resultBox.textContent = `로그인 완료`;
           resultBox.style.color = "blue";
         } else {
           resultBox.textContent = `아이디와 비밀번호를 확인하세요`;
           resultBox.style.color = "red";
-          return;
         }
-        // console.log(form.name);
-        // console.log(form.gender.value);
-
-        const data = {
-          id: form.id1.value,
-          password: form.password.value,
-        };
-        $.ajax({
-          type: "POST",
-          url: "/ajax",
-          data, //key == value 생략가능
-          success: (res) => {
-            console.log("res", res);
-          },
-        });
       }
     </script>
   </body>

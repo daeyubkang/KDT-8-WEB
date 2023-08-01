@@ -12,9 +12,18 @@ app.get("/", (req, res) => {
   res.render("axiosPost");
 });
 
+const id = 1234;
+const password = 1234;
+let result = true;
+
 app.post("/axios", (req, res) => {
   console.log("back", req.body);
-  res.send(req.body);
+  if (req.body.id1 == id && req.body.password1 == password) {
+    result = true;
+  } else {
+    result = false;
+  }
+  res.send(result);
 });
 
 app.listen(PORT, () => {
