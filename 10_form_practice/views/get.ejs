@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>실습. axios get으로 정보받기</h1>
+    <form name="register">
+      <label for="username">이름</label>
+      <input type="text" id="name" required />
+      <br />
+      <fieldset>
+        <legend>성별</legend>
+        <input type="radio" name="gender" id="male" value="male" />
+        <label for="male">남자</label>
+        <input type="radio" name="gender" id="female" value="female" />
+        <label for="female">여자</label>
+      </fieldset>
+      <br />
+      <fieldset>
+        <legend>생년월일</legend>
+        <select name="birthYear" id="year">
+          <% for( let i = 1990; i < 2023 ; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+        <label for="year">년</label>
+        <select name="birthMonth" id="month">
+          <% for(let i = 1; i < 13 ; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+        <label for="month">월</label>
+        <select name="birthDay" id="day">
+          <% for(let i = 1; i < 32 ; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+        <label for="day">일</label>
+      </fieldset>
+      <fieldset>
+        <legend>관심사</legend>
+        <input type="checkbox" name="hobby" id="travel" value="travel" />
+        <label for="travel">여행</label>
+        <input type="checkbox" name="hobby" id="fashion" value="fashion" />
+        <label for="fashion">패션</label>
+        <input type="checkbox" name="hobby" id="food" value="food" />
+        <label for="food">음식</label>
+      </fieldset>
+      <br />
+      <button type="button" onclick="axiosGet()">회원가입</button>
+    </form>
+    <br />
+    <div class="result"></div>
+    <br />
+    <a href="/">홈으로</a>
+
+    <script>
+      const resultBox = document.querySelector(".result");
+      function axiosGet() {
+        console.log("axios get");
+        const form = document.forms["register"];
+        const hobbyArray = [];
+        if ($("#travel").is(":checked")) {
+          hobbyArray.push("여행");
+        }
+        if ($("#fashion").is(":checked")) {
+          hobbyArray.push("패션");
+        }
+        if ($("#food").is(":checked")) {
+          hobbyArray.push("음식");
+        }
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+          birthYear: form.birthYear.value,
+          birthMonth: form.birthMonth.value,
+          birthDay: form.birthDay.value,
+          hobby: hobbyArray,
+        };
+        axios({
+          method: "GET",
+          //url: `/axios?name=${form.name.value}&gender=${form.gender.value}`
+          url: "/axios",
+          params: data,
+        }).then((res) => {
+          console.log(res);
+          resultBox.textContent = `GET /axios 요청 완료!  이름: ${res.data.name} 성별: ${res.data.gender} 생년월일: ${res.data.birthYear}년 ${res.data.birthMonth}월 ${res.data.birthDay}일 관심사: ${res.data.hobby}`;
+          resultBox.style.color = "green";
+        });
+      }
+    </script>
+  </body>
+</html>
