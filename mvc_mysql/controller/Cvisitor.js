@@ -5,13 +5,31 @@ exports.main = (req, res) => {
 };
 
 exports.getVisitors = (req, res) => {
-  Visitor.getVisitors((result) => {
-    console.log("Cvisitor.js:", result);
-    res.render("visitor", { data: result });
+  Visitor.getVisitors((rows) => {
+    res.render("visitor", { data: rows });
   });
 };
 
-exports.createVisitors = (req, res) => {
-  const { name, comment } = req.body;
-  Visitor.createVisitors(name, comment);
+exports.getVisitor = (req, res) => {
+  Visitor.getVisitor(req.query.id, (rows) => {
+    res.render("visitor", { data: rows });
+  });
+};
+
+exports.postVisitor = (req, res) => {
+  Visitor.postVisitor(req.body, () => {
+    res.send({ result: true });
+  });
+};
+
+exports.patchVisitor = (req, res) => {
+  Visitor.patchVisitor(req.body, () => {
+    res.send({ result: true });
+  });
+};
+
+exports.deleteVisitor = (req, res) => {
+  Visitor.deleteVisitor(req.body, () => {
+    res.send({ result: true });
+  });
 };

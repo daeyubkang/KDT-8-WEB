@@ -9,14 +9,14 @@ app.use("/views", express.static(__dirname + "/views"));
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
-const indexRouter = require("./routes");
-app.use("/", indexRouter);
-
 app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("*", (req, res) => {
+const indexRouter = require("./routes");
+app.use("/visitor", indexRouter);
+
+app.use("*", (req, res) => {
   res.render("404");
 });
 

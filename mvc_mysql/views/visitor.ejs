@@ -4,21 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <form action="/asd">
+    <form name="visitor-form">
       <fieldset>
         <legend>방명록 등록</legend>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="사용자 이름"
-        />
+        <input type="text" id="name" placeholder="사용자 이름" />
         <br />
-        <input type="text" name="comment" id="comment" placeholder="방명록" />
+        <input type="text" id="comment" placeholder="방명록" />
         <br />
-        <button type="button" onclick="create()">등록</button>
+        <button type="button" onclick="createComment1()">등록</button>
       </fieldset>
     </form>
     <br />
@@ -32,26 +33,86 @@
           <th>삭제</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="tbody">
         <% for(let i =0; i < data.length; i++) { %>
         <tr id="tr<%= data[i].id %>">
           <td><%= data[i].id%></td>
           <td><%= data[i].name%></td>
           <td><%= data[i].comment%></td>
-          <td><button type="button">수정</button></td>
-          <td><button type="button">삭제</button></td>
+          <td>
+            <button
+              type="button"
+              id="<%= data[i].id%>"
+              onclick="editComment(this)"
+            >
+              수정
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              id="<%= data[i].id%>"
+              onclick="deleteComment(this)"
+            >
+              삭제
+            </button>
+          </td>
         </tr>
         <% } %>
       </tbody>
     </table>
     <script>
-      function create() {
-        const username = document.querySelector("#username").value;
-        const comment = document.querySelector("#comment").value;
-        console.log(username, comment);
-        location.href = `/createVisitors?username=${encodeURIComponent(
-          username
-        )}&comment=${encodeURIComponent(comment)}`;
+      function createComment1() {
+        const form = document.forms["visitor-form"];
+        const tbody = document.querySelector("#tbody");
+        axios({
+          method: "POST",
+          url: "/visitor/write",
+          data: {
+            name: form.name.value,
+            comment: form.comment.value,
+          },
+        }).then((res) => {
+          window.location.reload();
+          // console.log("res:", res);
+          // const html = `<tr id="tr${res.data.id}">
+          //   <td>${res.data.id}</td>
+          //   <td>${res.data.name}</td>
+          //   <td>${res.data.comment}</td>
+          //   <td><button type="button" id="${res.data.id}" onclick="editComment(this)">수정</button></td>
+          //   <td><button type="button" id="${res.data.id}" onclick="deleteComment(this)">삭제</button></td>
+          // </tr>`;
+          // tbody.insertAdjacentHTML("beforeend", html);
+        });
+      }
+      function editComment(clicked_id) {
+        console.log(clicked_id.id);
+        const form = document.forms["visitor-form"];
+        axios({
+          method: "patch",
+          url: "/visitor/edit",
+          data: {
+            name: form.name.value,
+            comment: form.comment.value,
+            id: Number(clicked_id.id),
+          },
+        }).then((res) => {
+          window.location.reload();
+        });
+      }
+      function deleteComment(clicked_id) {
+        if (!confirm("삭제하시겠습니까?")) {
+          return;
+        }
+        axios({
+          method: "delete",
+          url: "/visitor/delete",
+          data: {
+            id: clicked_id.id,
+          },
+        }).then((res) => {
+          window.location.reload();
+        });
       }
     </script>
   </body>
