@@ -14,14 +14,12 @@ app.get("/", (req, res) => {
 });
 
 const indexRouter = require("./routes");
-app.use("/visitor", indexRouter);
+app.use("/user", indexRouter);
 
 app.use("*", (req, res) => {
   res.render("404");
 });
 
-db.sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {
-    console.log(`http://localhost:${PORT}`);
-  });
+app.listen(PORT, () => {
+  console.log(`http://localhost:${PORT}`);
 });
