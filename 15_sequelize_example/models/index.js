@@ -12,12 +12,18 @@ const sequelize = new Sequelize(
 );
 
 //model
-db.Student = require("./Students")(sequelize);
+db.Students = require("./Students")(sequelize);
 db.Classes = require("./Classes")(sequelize);
+db.StudentProfile = require("./StudentProfile")(sequelize);
 
 //관계 형성
-db.Student.hasMany(db.Classes, { foreignKey: "students_id" });
-db.Classes.belongsTo(db.Student, { foreignKey: "students_id" });
+//1:1
+db.Students.hasOne(db.StudentProfile);
+db.StudentProfile.belongsTo(db.Students);
+
+//1:다
+db.Students.hasMany(db.Classes);
+db.Classes.belongsTo(db.Students);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
