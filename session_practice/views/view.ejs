@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <input type="text" id="userid" placeholder="아이디" /> <br />
+    <input type="password" id="password" placeholder="비밀번호" /> <br />
+    <button id="login" onclick="login()">로그인</button>
+
+    <script>
+      function login() {
+        const userid = document.querySelector("#userid").value;
+        const password = document.querySelector("#password").value;
+
+        axios({
+          method: "post",
+          url: "/login",
+          data: {
+            userid: userid,
+            password: password,
+          },
+        });
+        location.href = "/logout";
+      }
+    </script>
+  </body>
+</html>
