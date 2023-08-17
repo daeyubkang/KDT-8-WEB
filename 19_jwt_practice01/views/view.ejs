@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <input type="text" id="userid" placeholder="아이디" /> <br />
+    <input type="password" id="password" placeholder="비밀번호" /> <br />
+    <button id="login" onclick="login()">로그인</button>
+
+    <script>
+      (function () {
+        let result1 = "";
+        const local = localStorage.getItem("token");
+        console.log(local);
+        if (local != null) {
+          axios({
+            method: "post",
+            url: "/logout",
+            data: {
+              token: local,
+            },
+          }).then((result) => {
+            result1 = result;
+            console.log(result1.data.user.id);
+            // location.href = `/logout?token=${result1.data.user.id}`;
+            axios({
+              method: "get",
+              url: `/logout`,
+              params: { token: result1.data.user.id },
+            });
+          });
+        }
+      })();
+
+      function login() {
+        const userid = document.querySelector("#userid").value;
+        const password = document.querySelector("#password").value;
+
+        axios({
+          method: "post",
+          url: "/login",
+          data: {
+            id: userid,
+            password: password,
+          },
+        }).then((res) => {
+          console.log(res);
+          localStorage.setItem("token", res.data);
+        });
+        location.reload(true);
+      }
+    </script>
+  </body>
+</html>
