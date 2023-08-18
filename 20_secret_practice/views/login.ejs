@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="qwe">
+      <h1>로그인</h1>
+      아이디: <input type="text" id="userid" /> <br />
+      이름: <input type="text" id="name" /> <br />
+      비밀번호: <input type="password" id="password" /> <br />
+      <button id="login" onclick="login()">로그인</button>
+    </div>
+
+    <script>
+      async function login() {
+        const userid = document.querySelector("#userid").value;
+        const password = document.querySelector("#password").value;
+        const name = document.querySelector("#name").value;
+        console.log("login");
+        await axios({
+          method: "post",
+          url: "/login",
+          data: {
+            userid: userid,
+            password: password,
+            name: name,
+          },
+        }).then((res) => {
+          console.log(res);
+          if (res.data.data1) {
+            localStorage.setItem("token", res.data.data3);
+            document.querySelector("#qwe").innerHTML = `
+            <h1>${res.data.data2}님 로그인 성공</h1>
+            <button id="update" onclick="update()">회원정보 수정</button>`;
+          } else {
+            alert("아이디 비밀번호 확인");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
