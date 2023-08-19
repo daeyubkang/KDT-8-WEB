@@ -47,23 +47,40 @@ exports.post_login = (req, res) => {
       console.log(token);
     }
     console.log(result);
-    res.send({ data1: compare, data2: result.dataValues.name, data3: token });
+    res.send({ data1: compare, data2: result.dataValues, data3: token });
   });
 };
 
 exports.get_update = (req, res) => {
-  res.render("update");
+  console.log(req.query);
+  const token = req.query.token;
+  jwt.verify(token, SECRET, (err, decoded) => {
+    if (err) {
+      return res
+        .status(403)
+        .send({ result: false, message: "검증에 실패하였습니다." });
+    } else {
+      console.log("검증 성공");
+      models.Users.findOne({
+        where: { name: req.query.name },
+      }).then((result) => {
+        console.log(result);
+        res.render("update", { data: result.dataValues });
+      });
+    }
+  });
 };
 
 exports.post_update = (req, res) => {
-  models.Users.findOne({
-    where: { userid: req.body.userid },
-  }).then((result) => {
-    const compare = comparePassword(
-      req.body.password,
-      result.dataValues.password
-    );
-    console.log(result);
-    res.send({ data1: compare, data2: result.dataValues.name });
+  models.Users.update(
+    {
+      name: req.body.name,
+      userid: req.body.userid,
+    },
+    {
+      where: { id: req.body.id },
+    }
+  ).then(() => {
+    res.send({ result: true });
   });
 };

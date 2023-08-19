@@ -8,25 +8,41 @@
   </head>
   <body>
     <h1>회원정보 수정</h1>
-    아이디: <input type="text" id="userid" /> <br />
-    이름: <input type="text" id="name" /> <br />
+    아이디: <input type="text" id="userid" value="<%= data.userid%>" /> <br />
+    이름: <input type="text" id="name" value="<%= data.name%>" /> <br />
     비밀번호: <input type="password" id="password" /> <br />
     <button id="update" onclick="update()">회원정보 수정</button>
+    <input style="display: none" type="text" id="id1" value="<%=data.id %>" />
+    <input
+      style="display: none"
+      type="text"
+      id="userid1"
+      value="<%=data.userid %>"
+    />
 
     <script>
       function update() {
+        const userid1 = document.querySelector("#userid").value;
         const userid = document.querySelector("#userid").value;
         const password = document.querySelector("#password").value;
         const name = document.querySelector("#name").value;
+        const id1 = document.querySelector("#id1").value;
         axios({
           method: "post",
-          url: "/",
+          url: "/update",
           data: {
+            id: id1,
             userid: userid,
             name: name,
             password: password,
           },
-        }).then((location.href = "/login"));
+        }).then(() => {
+          alert("회원정보 수정 완료");
+          console.log(userid1);
+          const token = localStorage.getItem(id1);
+          localStorage.setItem(id1, token);
+          location.href = "/login";
+        });
       }
     </script>
   </body>

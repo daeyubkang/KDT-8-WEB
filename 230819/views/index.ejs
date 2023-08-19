@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>파일 업로드</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>파일 업로드</h1>
+
+    <!-- <h2>하나의 input에 하나의 파일 업로드</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="userfile1" /> <br />
+      <input type="text" name="title1" /> <br />
+      <input type="file" name="userfile2" /> <br />
+      <input type="text" name="title2" /> <br />
+      <button type="submit">업로드</button>
+    </form> -->
+
+    <h2>동적 파일 업로드</h2>
+    <input type="file" name="userfile" id="file1" /> <br />
+    <button type="button" onclick="fileUpload()">업로드</button> <br />
+    <img src="" alt="이미지" width="200px" id="image" />
+
+    <script>
+      function fileUpload() {
+        const formData = new FormData();
+        const file = document.querySelector("#file1");
+        formData.append("dynamic-userfile", file.files[0]);
+
+        axios({
+          method: "post",
+          url: "/upload",
+          data: formData,
+          headers: {
+            "Contents-Type": "multipart/form-data",
+          },
+        }).then((res) => {
+          console.log(res);
+          document.querySelector("#image").src = `${res.data.path}`;
+        });
+      }
+    </script>
+  </body>
+</html>

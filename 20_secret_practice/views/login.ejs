@@ -16,6 +16,8 @@
     </div>
 
     <script>
+      let name1 = "";
+      let name2 = "";
       async function login() {
         const userid = document.querySelector("#userid").value;
         const password = document.querySelector("#password").value;
@@ -32,14 +34,22 @@
         }).then((res) => {
           console.log(res);
           if (res.data.data1) {
-            localStorage.setItem("token", res.data.data3);
+            name1 = res.data.data2.id;
+            name2 = res.data.data2.name;
+            localStorage.setItem(res.data.data2.id, res.data.data3);
             document.querySelector("#qwe").innerHTML = `
-            <h1>${res.data.data2}님 로그인 성공</h1>
+            <h1>${res.data.data2.name}님 로그인 성공</h1>
             <button id="update" onclick="update()">회원정보 수정</button>`;
           } else {
             alert("아이디 비밀번호 확인");
           }
         });
+      }
+
+      function update() {
+        location.href = `/update?token=${localStorage.getItem(
+          name1
+        )}&name=${name2}`;
       }
     </script>
   </body>
