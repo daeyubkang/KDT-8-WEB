@@ -1,16 +1,14 @@
+const http = require("http");
 const ws = require("ws");
 const express = require("express");
 const app = express();
 const PORT = 8000;
+const server = http.createServer(app);
 
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
   res.render("client");
-});
-
-const server = app.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}`);
 });
 
 //웹소켓 서버 접속
@@ -33,7 +31,8 @@ wss.on("connection", (socket) => {
     console.log(`클라이언트로부터 받은 메세지: ${message}`);
     //클라이언트로 응답 메세지 전송
     // socket.send(`서버 메세지: ${message}`);
-    sockets.forEach((elem, num) => {
+    wss.clients.forEach((elem, num) => {
+      console.log(wss.clients);
       if (msg.user == "userCount") {
         elem.send(`사용자${userCount}님 입장하였습니다.`);
       } else {
@@ -49,4 +48,8 @@ wss.on("connection", (socket) => {
   socket.on("close", () => {
     console.log("클라이언트와 연결이 종료됨");
   });
+});
+
+server.listen(PORT, () => {
+  console.log(`http://localhost:${PORT}`);
 });

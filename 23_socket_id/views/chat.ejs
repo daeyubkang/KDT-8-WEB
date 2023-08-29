@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Document</title>
+    <style>
+      .my {
+        background-color: yellow;
+        width: fit-content;
+        margin-left: auto;
+        list-style-type: none;
+      }
+      .other {
+        background-color: rgb(224, 210, 210);
+        width: auto;
+        width: fit-content;
+
+        list-style-type: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="space" style="width: 200px"></div>
+    <form id="chat">
+      <input type="text" id="message" placeholder="채팅내용" />
+      <button>채팅</button>
+    </form>
+    <script>
+      let myID = "";
+      const space = document.querySelector("#space");
+      const chatForm = document.querySelector("#chat");
+      const socket = io();
+      const chatroom = prompt("채팅방을 입력하세요: ");
+      socket.emit("join", chatroom);
+
+      socket.on("userjoin", (rooms, myid) => {
+        console.log(myid);
+        console.log(message);
+        myID = myid;
+      });
+      socket.on("chat", (message, id1) => {
+        console.log(id1);
+        const p = document.createElement("li");
+        p.textContent = message;
+        space.appendChild(p);
+        if (myID == id1) {
+          p.className += "my";
+        } else {
+          p.className += "other";
+        }
+      });
+
+      chatForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const msg = chatForm.querySelector("#message");
+        socket.emit("message", msg.value);
+        msg.value = "";
+      });
+    </script>
+  </body>
+</html>

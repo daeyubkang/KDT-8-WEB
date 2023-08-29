@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <!-- <div>Socket IO</div> -->
+    <h1>Hello World</h1>
+    <button id="hello">hello</button>
+    <button id="study">study</button>
+    <button id="bye">bye</button>
+    <h3></h3>
+    <!-- <form id="chat">
+      <input type="text" id="user" placeholder="사용자명" />
+      <input type="text" id="message" placeholder="채팅내용" /> <br />
+      <button>채팅</button>
+    </form> -->
+
+    <script>
+      //   const chatForm = document.querySelector("#chat");
+      const h3 = document.querySelector("h3");
+      //io()가 클라이언트 소켓생성 및 연결 설정
+      const socket = io();
+      socket.emit("new message", "hello, Server", (res) => {
+        console.log(res);
+      });
+      //폼 이벤트
+      //   chatForm.addEventListener("submit", (event) => {
+      //     event.preventDefault();
+      //     const user = chatForm.querySelector("#user");
+      //     const message = chatForm.querySelector("#message");
+      //     socket.emit(
+      //       "new message",
+      //       { name: user.value, message: message.value },
+      //       (res) => {
+      //         console.log(res);
+      //         const li = document.createElement("li");
+      //         li.textContent = `${res.name}: ${res.message}`;
+      //         ul.appendChild(li);
+      //       }
+      //     );
+      //   });
+
+      const hello = document.querySelector("#hello");
+      const study = document.querySelector("#study");
+      const bye = document.querySelector("#bye");
+
+      hello.addEventListener("click", (event) => {
+        socket.emit("hello", { message: "hello" }, (res, text) => {
+          console.log(res);
+          h3.textContent = `${res.message}: ${text}`;
+        });
+      });
+
+      study.addEventListener("click", (event) => {
+        socket.emit("study", { message: "study" }, (res, text) => {
+          console.log(res);
+          h3.textContent = `${res.message}: ${text}`;
+        });
+      });
+
+      bye.addEventListener("click", (event) => {
+        socket.emit("bye", { message: "bye" }, (res, text) => {
+          console.log(res);
+          h3.textContent = `${res.message}: ${text}`;
+        });
+      });
+    </script>
+  </body>
+</html>
