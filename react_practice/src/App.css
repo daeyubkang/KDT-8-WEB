@@ -1,0 +1,17 @@
+#bookTitle {
+  color: orange;
+}
+#div1 {
+  width: 500px;
+  height: 500px;
+  background-color: beige;
+  text-align: center;
+}
+#bookImage {
+  width: 150px;
+  height: 200px;
+}
+#bookH4 {
+  text-align: left;
+  margin-left: 70px;
+}
