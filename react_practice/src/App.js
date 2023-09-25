@@ -21,18 +21,24 @@
 // import LifePrac2 from "./LifePrac2";
 // import LifeCycleClass from "./LifeCycleClass";
 // import LifeCycleFunc from "./LifeCycleFunc";
-import RefPractice03 from "./refPractice03";
-import RefPractice04 from "./refPractice04";
-import Board03 from "./Board03";
-import UseMemo from "./UseMemo";
-import UseCallback from "./UseCallback";
-import UseReducer from "./UseReducer";
-import LoginPage from "./LoginPage";
+// import RefPractice03 from "./refPractice03";
+// import RefPractice04 from "./refPractice04";
+// import Board03 from "./Board03";
+// import UseMemo from "./UseMemo";
+// import UseCallback from "./UseCallback";
+// import UseReducer from "./UseReducer";
+// import LoginPage from "./LoginPage";
+// import Style from "./10_style/Style";
+// import SassComponent from "./10_style/SassComponent";
+import StyledComponent from "./10_style/StyledComponent";
 
 function App() {
   return (
     <>
-      <LoginPage></LoginPage>
+      <StyledComponent></StyledComponent>
+      {/* <SassComponent></SassComponent> */}
+      {/* <Style></Style> */}
+      {/* <LoginPage></LoginPage> */}
       {/* <UseReducer></UseReducer> */}
       {/* <UseCallback></UseCallback> */}
       {/* <UseMemo></UseMemo>

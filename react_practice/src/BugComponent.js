@@ -1,5 +1,5 @@
 import React from "react";
-import "./Bug.css";
+// import "./Bug.css";
 
 function BugComponent() {
   return (
