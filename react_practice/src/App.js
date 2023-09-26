@@ -30,12 +30,22 @@
 // import LoginPage from "./LoginPage";
 // import Style from "./10_style/Style";
 // import SassComponent from "./10_style/SassComponent";
-import StyledComponent from "./10_style/StyledComponent";
+// import StyledComponent from "./10_style/StyledComponent";
+import { Outlet } from "react-router-dom";
+import Header from "./12_router/Header";
+import Router from "./Router";
+import Practice01 from "./12_router/Practice01";
 
 function App() {
   return (
     <>
-      <StyledComponent></StyledComponent>
+      {/* ver2 */}
+      <Practice01></Practice01>
+      <Outlet></Outlet>
+      {/* ver1 */}
+      {/* <Router></Router> */}
+
+      {/* <StyledComponent></StyledComponent> */}
       {/* <SassComponent></SassComponent> */}
       {/* <Style></Style> */}
       {/* <LoginPage></LoginPage> */}
