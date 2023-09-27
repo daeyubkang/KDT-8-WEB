@@ -35,16 +35,25 @@ import { Outlet } from "react-router-dom";
 import Header from "./12_router/Header";
 import Router from "./Router";
 import Practice01 from "./12_router/Practice01";
+import StyledPractice01 from "./10_style/StyledPractice01";
+import StyledPractice02 from "./10_style/StyledPractice02";
+import Form from "./13_Form/Form";
+import FormPractice from "./13_Form/FormPractice";
 
 function App() {
   return (
     <>
+      <FormPractice></FormPractice>
+      {/* <Form></Form> */}
+
       {/* ver2 */}
-      <Practice01></Practice01>
-      <Outlet></Outlet>
+      {/* <Practice01></Practice01>
+      <Outlet></Outlet> */}
       {/* ver1 */}
       {/* <Router></Router> */}
 
+      {/* <StyledPractice02></StyledPractice02> */}
+      {/* <StyledPractice01></StyledPractice01> */}
       {/* <StyledComponent></StyledComponent> */}
       {/* <SassComponent></SassComponent> */}
       {/* <Style></Style> */}

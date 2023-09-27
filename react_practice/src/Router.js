@@ -15,7 +15,7 @@ import App from "./App";
 import Error from "./12_router/Error";
 import Comment from "./12_router/Comment";
 import KDT from "./12_router/KDT";
-import Codingon from "./12_router/Codingon";
+// import Codingon from "./12_router/Codingon";
 import SearchParam from "./12_router/SearchParam";
 
 // export default function Router() {
