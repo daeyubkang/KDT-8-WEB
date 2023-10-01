@@ -12,11 +12,7 @@ const sequelize = new Sequelize(
 );
 
 //모델
-//db에 User생성
-db.User = require("./Todo")(sequelize);
-// const model = require('./User');
-// const temp = model(sequelize);
-// db.User = temp;
+db.Todos = require("./Todos")(sequelize);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
