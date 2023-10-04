@@ -31,27 +31,48 @@
 // import Style from "./10_style/Style";
 // import SassComponent from "./10_style/SassComponent";
 // import StyledComponent from "./10_style/StyledComponent";
-import { Outlet } from "react-router-dom";
-import Header from "./12_router/Header";
-import Router from "./Router";
-import Practice01 from "./12_router/Practice01";
-import StyledPractice01 from "./10_style/StyledPractice01";
-import StyledPractice02 from "./10_style/StyledPractice02";
-import Form from "./13_Form/Form";
-import FormPractice from "./13_Form/FormPractice";
+// import { Outlet } from "react-router-dom";
+// import Header from "./12_router/Header";
+// import Router from "./Router";
+// import Practice01 from "./12_router/Practice01";
+// import StyledPractice01 from "./10_style/StyledPractice01";
+// import StyledPractice02 from "./10_style/StyledPractice02";
+// import Form from "./13_Form/Form";
+// import FormPractice from "./13_Form/FormPractice";
+// import { useState } from "react";
+// import MyContext from "./14_Context/store/lang-context";
+import LangSelector from "./14_Context/LangSelector";
+import LanguageProvider from "./14_Context/LangProvider";
+// import MyContextPractice01 from "./14_Context/store/context-practice01";
+import ProviderPractice01 from "./14_Context/ProviderPractice01";
+import SelectorPractice01 from "./14_Context/SelectorPractice01";
+import ProviderPractice02 from "./14_Context/ProviderPractice02";
+import SelectorPractice02 from "./14_Context/SelectorPractice02";
+import Cart from "./14_Context/Cart";
 
 function App() {
   return (
     <>
-      <FormPractice></FormPractice>
+      <ProviderPractice02>
+        <SelectorPractice02></SelectorPractice02>
+        <Cart></Cart>
+      </ProviderPractice02>
+      {/* <ProviderPractice01>
+        <SelectorPractice01></SelectorPractice01>
+      </ProviderPractice01> */}
+      {/* <LanguageProvider>
+        <LangSelector></LangSelector>
+      </LanguageProvider> */}
+      {/* <MyContext.Provider value={{ language, setLanguage }}>
+        <LangSelector></LangSelector>
+      </MyContext.Provider> */}
+      {/* <FormPractice></FormPractice> */}
       {/* <Form></Form> */}
-
       {/* ver2 */}
       {/* <Practice01></Practice01>
       <Outlet></Outlet> */}
       {/* ver1 */}
       {/* <Router></Router> */}
-
       {/* <StyledPractice02></StyledPractice02> */}
       {/* <StyledPractice01></StyledPractice01> */}
       {/* <StyledComponent></StyledComponent> */}
