@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
 
@@ -24,7 +27,8 @@ const Login = () => {
       if (data.result) {
         console.log(data);
         alert("로그인 성공");
-        localStorage.setItem("token", data.token);
+        sessionStorage.setItem("token", data.token);
+        navigate("/");
       } else {
         console.log(data);
         alert("로그인 실패");

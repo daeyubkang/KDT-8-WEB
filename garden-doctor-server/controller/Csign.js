@@ -61,6 +61,17 @@ const login = async (req, res) => {
   }
 };
 
+const verify = (req, res) => {
+  jwt.verify(req.body.token, SECRET, (err, decoded) => {
+    if (err) {
+      return res
+        .status(403)
+        .send({ result: false, message: "검증에 실패하였습니다." });
+    }
+    res.send({ result: true, user: decoded });
+  });
+};
+
 const patch_todo = (req, res) => {
   const { id, title, done } = req.body;
   Todos.update({ title, done }, { where: { id } }).then(() => {
@@ -77,4 +88,4 @@ const delete_todo = (req, res) => {
   });
 };
 
-module.exports = { get_todo, signup, login, patch_todo, delete_todo };
+module.exports = { get_todo, signup, login, verify, patch_todo, delete_todo };

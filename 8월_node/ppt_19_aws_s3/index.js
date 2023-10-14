@@ -1,11 +1,11 @@
 const express = require("express");
+const app = express();
+const PORT = 8000;
 const multer = require("multer");
 const path = require("path");
 const dotenv = require("dotenv");
 const aws = require("aws-sdk"); //aws 설정을 위한 모듈
 const multerS3 = require("multer-s3"); //aws s3에 업로드하기 위한 multer설정
-const app = express();
-const PORT = 8000;
 dotenv.config();
 
 //aws설정
